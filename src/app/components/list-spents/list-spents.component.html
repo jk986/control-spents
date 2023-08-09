@@ -1,0 +1,16 @@
+<app-filter-spents 
+    *ngIf="spents[0]"
+    [spents]="spents"
+    (sendSpentsFilter)="getFilter($event)"    
+></app-filter-spents>
+
+<div
+    class="listado-gastos contenedor"    
+>
+    <h2>{{spents.length ? 'Gastos' : 'No hay gastos aún' }}</h2>
+    <app-spent 
+        [spents]="spents" 
+        (updateSpent)="getEditSpent($event)"
+        (storeDeleteSpent)="getDeleteSpent($event)"
+    ></app-spent>
+</div>

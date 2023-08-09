@@ -27,7 +27,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./src/assets/plugin/jQuery-Swipeable-List-View/jquery-listswipe.js",
+              "./node_modules/jquery-circle-progress/dist/circle-progress.min.js"
+            ]
           },
           "configurations": {
             "production": {

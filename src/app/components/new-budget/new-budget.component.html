@@ -1,0 +1,39 @@
+
+<!-- template para añadir un presupueso -->
+<div *ngIf="!budgetValid; then newBudget else controlBudget "></div>
+<!-- agregar presupuesto -->
+<ng-template #newBudget >
+    <div class="contenedor-presupuesto contenedor sombra">
+        <form class="formulario" (submit)="handleBudget($event)">
+            <div class="campo">
+                
+                <label for="newP">Definir Presupuesto</label>
+                
+                <input 
+                    class="nuevo-presupuesto" 
+                    type="number" 
+                    name="newP" 
+                    id="newP"
+                    placeholder="Añade tu Presupuesto"
+                    #newP = "ngModel"
+                    [(ngModel)] = "budget"
+                    required
+                />
+                
+                <input type="submit" value="add" />
+
+                <app-message [tipeMessage]="tipeMesage" [message]="message"></app-message>
+                
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- constrol presupuesto -->
+<ng-template #controlBudget>
+    <app-control-budget 
+        [budget]="budget"
+        [spents]="spents"
+        (resetApp)="resetApp($event)"
+    ></app-control-budget>
+</ng-template>
+

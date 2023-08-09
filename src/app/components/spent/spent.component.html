@@ -1,0 +1,21 @@
+<div class="item-list spents-list">
+    <div class="gasto sombra item" *ngFor="let spent of spents">
+        <button class="action" (click)="editSpent(spent)">Editar</button>
+        <div class="contenido-gasto">
+            <img [src]="icons.saving" alt="icono categoria" *ngIf="spent.category==='saving'">
+            <img [src]="icons.food" alt="icono categoria" *ngIf="spent.category==='food'">
+            <img [src]="icons.home" alt="icono categoria" *ngIf="spent.category==='home'">
+            <img [src]="icons.several" alt="icono categoria" *ngIf="spent.category==='several'">
+            <img [src]="icons.leisure" alt="icono categoria" *ngIf="spent.category==='leisure'">
+            <img [src]="icons.health" alt="icono categoria" *ngIf="spent.category==='health'">
+            <img [src]="icons.subscription" alt="icono categoria" *ngIf="spent.category==='subscription'">
+            <div class="descripcion-gasto">
+                <p class="categoria">{{spent.category}}</p>
+                <p class="nombre-gasto">{{spent.nameBudg}}</p>
+                <p class="fecha-gasto">Agregado el: <span>{{spent.date}}</span></p>
+            </div>
+            <p class="cantidad-gasto">${{spent.amount}}</p>
+        </div>
+        <button class="action" (click)="deleteSpent(spent)">Eliminar</button>
+    </div>
+</div>

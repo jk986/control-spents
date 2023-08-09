@@ -1,0 +1,76 @@
+<div class="modal">
+    <!-- Icono cerrar -->
+    <div class="cerrar-modal">
+        <img 
+            src="../../../assets/img/cerrar.svg" 
+            alt="cerrar modal"
+            (click)="hideModal()"
+        />
+    </div>
+    <!-- Formulario nuevo gasto -->
+    <form
+        id="form-budget" 
+        #formSpent="ngForm"
+        [ngClass]="{'formulario':true,'animar':animarForm}"
+        (submit)="handleSubmit($event)"
+    >
+        <legend *ngIf="edit">Editar Gasto</legend>
+        <legend *ngIf="!edit">Nuevo Gasto</legend>
+        <!-- Campo Nombre del gasto -->
+        <app-message *ngIf="message!='' " [message]="message" [tipeMessage]="'error'" ></app-message>
+        <div class="campo">
+            <label for="nameBudg">Nombre Gasto</label>
+            <input
+                id="nameBudg"
+                name="nameBudg" 
+                type="text" 
+                placeholder="Añade el Nombre del Gasto"
+                #nameBudg="ngModel"
+                [(ngModel)]="spent.nameBudg"
+            />
+        </div>
+        <!-- Campo cantidad -->
+        <div class="campo">
+            <label for="amount">Cantidad</label>
+            <input 
+                type="number" 
+                id="amount"
+                name="amount" 
+                placeholder="Añade la cantidad del gasto: ej. 200"
+                #amount="ngModel"
+                [(ngModel)]="spent.amount"
+            />
+        </div>
+        <!-- Campo categoria -->
+        <div class="campo">
+            <label for="category">Categoría</label>
+            <select 
+                id="category"
+                name="category"
+                #category="ngModel"
+                [(ngModel)]="spent.category"
+            >
+                <option value="">-- Seleccione --</option>
+                <option value="saving">Ahorro</option>
+                <option value="food">Comida</option>
+                <option value="home">Casa</option>
+                <option value="several">Gastos Varios</option>
+                <option value="leisure">Ocio</option>
+                <option value="health">Salud</option>
+                <option value="subscription">Suscripciones</option>
+            </select>
+        </div>
+        <input
+            *ngIf="edit" 
+            type="submit" 
+            value="Actializar Gasto"
+        />
+        <input 
+            *ngIf="!edit" 
+            type="submit" 
+            value="Añadir Gasto"
+        />
+            <!-- [disabled]="!formSpent.form.valid" -->
+    </form>
+
+</div>

@@ -1,0 +1,21 @@
+<div class="contenedor-presupuesto contenedor sombra dos-columnas">
+    <div>
+        <app-graphic [porcent]="porcentaje"></app-graphic>
+    </div>
+    <div class="contenido-presupuesto">
+        <button type="button" class="reset-app" (click)="handleResetApp()">
+            Resetear App
+        </button>
+        <p>
+            <span>Presupuesto: </span> {{formatearCantidad(budget)}}
+        </p>
+        
+        <p [ngClass]="{'negativo':disponible<0}">
+            <span>Disponible: </span> {{formatearCantidad(disponible)}}
+        </p>
+        
+        <p>
+            <span>Gastado: </span> {{formatearCantidad(gastado)}}
+        </p>
+    </div>
+</div>
